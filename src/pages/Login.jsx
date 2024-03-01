@@ -1,5 +1,4 @@
 import React from 'react'
-import Add from "../img/Antu_insert-image.svg.png"
 
 export const Login = () => {
   return (
