@@ -8,8 +8,9 @@ import { doc, setDoc } from "firebase/firestore";
 export const Register = () => {
 
   const [err, setErr] = useState(false);
+  
   const handleSubmit = async (e) => {
-    e.preventDefault()
+    e.preventDefault();
     const displayName = e.target[0].value;
     const email = e.target[1].value;
     const password = e.target[2].value;
@@ -25,19 +26,19 @@ export const Register = () => {
 
         (error) => {
           setErr(true);
+          console.log(error)
         }, 
         () => {
           getDownloadURL(uploadTask.snapshot.ref).then(async(downloadURL) => {
-            await updateProfile(res.user,{
+            await updateProfile(res.user, {
               displayName,
-              photoURL:downloadURL
+              photoURL: downloadURL,
             });
-            await setDoc(doc(db, "users", res.user.uid),{
+            await setDoc(doc(db, "users", res.user.uid), {
               uid: res.user.uid,
               displayName,
               email,
-              password,
-              photoURL: downloadURL
+              photoURL: downloadURL,
             });
           });
         }
@@ -45,6 +46,7 @@ export const Register = () => {
 
     }catch(err){
       setErr(true);
+      console.log(err)
     }
   }
 

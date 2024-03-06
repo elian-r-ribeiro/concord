@@ -4,12 +4,12 @@ import { getFirestore } from "firebase/firestore";
 import { getStorage } from "firebase/storage";
 
 const firebaseConfig = {
-  apiKey: "AIzaSyCSUKodDU1Yz3MkJjkA97aU9PwNXTtGdhE",
-  authDomain: "concord-cc034.firebaseapp.com",
-  projectId: "concord-cc034",
-  storageBucket: "concord-cc034.appspot.com",
-  messagingSenderId: "187987741930",
-  appId: "1:187987741930:web:e3e27b182b4c2313db1b93"
+  apiKey: "AIzaSyBll3J7U7v6gFRbF-r0UetiW6oYBQ36i00",
+  authDomain: "concord-df778.firebaseapp.com",
+  projectId: "concord-df778",
+  storageBucket: "concord-df778.appspot.com",
+  messagingSenderId: "335132904393",
+  appId: "1:335132904393:web:92604228f3440e95357618"
 };
 
 export const app = initializeApp(firebaseConfig);
