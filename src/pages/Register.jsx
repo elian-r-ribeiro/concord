@@ -17,19 +17,14 @@ export const Register = () => {
     const file = e.target[3].files[0];
 
     try{
+
       const res = await createUserWithEmailAndPassword(auth, email, password);
+
       const storageRef = ref(storage, displayName);
 
-      const uploadTask = uploadBytesResumable(storageRef, file);
-
-      uploadTask.on(
-
-        (error) => {
-          setErr(true);
-          console.log(error)
-        }, 
-        () => {
-          getDownloadURL(uploadTask.snapshot.ref).then(async(downloadURL) => {
+      await uploadBytesResumable(storageRef, file).then(() => {
+        getDownloadURL(storageRef).then(async (downloadURL) => {
+          try{
             await updateProfile(res.user, {
               displayName,
               photoURL: downloadURL,
@@ -40,17 +35,17 @@ export const Register = () => {
               email,
               photoURL: downloadURL,
             });
-          });
-        }
-      );
-
+          }catch(err){
+            setErr(true);
+            console.log(err);
+          }
+        })
+      })
     }catch(err){
       setErr(true);
-      console.log(err)
+      console.log(err);
     }
   }
-
-  
 
   return (
     <div className='formContainer'>
