@@ -1,21 +1,20 @@
-import React from 'react'
-import More from '../img/android-3-dot-menu-icon-0.png'
-import Messages from './Messages'
-import Input from './Input'
+import React, { useContext } from "react";
+import Messages from "./Messages";
+import Input from "./Input";
+import { ChatContext } from "../context/ChatContext";
 
 const Chat = () => {
+  const { data } = useContext(ChatContext);
+
   return (
-    <div className='chat'>
+    <div className="chat">
       <div className="chatInfo">
-        <span>Jane</span>
-        <div className="chatIcons">
-          <img src={More} alt="" />
-        </div>
+        <span>{data.user?.displayName}</span>
       </div>
       <Messages />
-      <Input />
+      <Input/>
     </div>
-  )
-}
+  );
+};
 
-export default Chat
+export default Chat;
